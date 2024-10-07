@@ -13,29 +13,28 @@ const products = [
   // to render product cards in HTML
   function renderProducts(productArray) {
     const productGrid = document.getElementById('productGrid');
-    productGrid.innerHTML = ''; 
+    productGrid.innerHTML = '';
   
     productArray.forEach(product => {
-      const productHTML = `
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col h-full">
-      <img class="h-40 w-full object-cover mb-4 rounded-lg" src="${product.image}" alt="${product.name}">
-      
-      <div class='flex align-center gap-4 mb-2'>
-        <h3 class="text-lg font-semibold text-gray-100">${product.name}</h3>
-        <span class="text-black bg-yellow-300 rounded p-1 text-sm">${product.category}</span>
+      const productHTML = productGrid.innerHTML += `
+      <div class="product-card">
+        <img class="product-image" src="${product.image}" alt="${product.name}">
+        
+        <div class='product-header'>
+          <h3 class="product-name">${product.name}</h3>
+          <span class="product-category">${product.category}</span>
+        </div>
+        
+        <p class="product-description">${product.description}</p>
+        
+        <p class="product-price">$${product.price}</p>
+        
+        <button class="add-to-cart-btn">
+          Add to Cart
+        </button>
       </div>
-      
-      <p class="text-gray-400 mt-1 flex-grow">${product.description}</p>
-      
-      <p class="mt-2 text-gray-100 font-bold">$${product.price}</p>
-      
-      <button class="mt-4 w-full bg-green-500 hover:bg-green-600 text-gray-900 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Add to Cart
-      </button>
-    </div>
+    `;
     
-      `;
-      productGrid.innerHTML += productHTML; 
     });
 
     
